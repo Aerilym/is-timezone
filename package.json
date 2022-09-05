@@ -1,5 +1,5 @@
 {
-  "name": "is-timzone",
+  "name": "is-timezone",
   "version": "1.0.0",
   "description": "Is this string a valid timezone? Validate timezones before using them in node, dates, or new objects.",
   "main": "lib/index.js",
