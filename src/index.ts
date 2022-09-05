@@ -1,13 +1,20 @@
 import { timeZonesNames } from "@vvo/tzdb";
 
-export default function isTimezone(tz: string, allowLowerCase: boolean = false): boolean {
+/**
+ * Validate that a string is a valid timezone.
+ * 
+ * @param timezone {string} The timezone to validate.
+ * @param allowLowerCase {boolean} Allow lowercase timezone names.
+ * @returns Whether the timezone is valid.
+ */
+export default function isTimezone(timezone: string, allowLowerCase: boolean = false): boolean {
   if (allowLowerCase) {
-    tz = tz.toLowerCase();
-    return timeZonesNames.some(tzName => {
-      return tz === tzName.toLowerCase();
+    timezone = timezone.toLowerCase();
+    return timeZonesNames.some(timezoneName => {
+      return timezone === timezoneName.toLowerCase();
     });
   } else {
-    if (!tz) throw new Error('I need a timezone');
-    return timeZonesNames.includes(tz);
+    if (!timezone) throw new Error('I need a timezone');
+    return timeZonesNames.includes(timezone);
   }
 };
