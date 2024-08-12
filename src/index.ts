@@ -1,20 +1,19 @@
 import { timeZonesNames } from "@vvo/tzdb";
 
+
+// The sets are created for quicker timezone checking using the .has method
+const timezones = new Set(timeZonesNames);
+const lowercaseTimezones = new Set(timeZonesNames.map((str) => str.toLowerCase()));
+
 /**
- * Validate that a string is a valid timezone.
+ * Validate a string is a valid timezone.
  * 
  * @param timezone {string} The timezone to validate.
- * @param allowLowerCase {boolean} Allow lowercase timezone names.
- * @returns Whether the timezone is valid.
+ * @param ignoreCase {boolean} Allow lowercase timezone names.
+ * @returns if the string is a valid timezone. (true/false)
  */
-export default function isTimezone(timezone: string, allowLowerCase: boolean = false): boolean {
-  if (allowLowerCase) {
-    timezone = timezone.toLowerCase();
-    return timeZonesNames.some(timezoneName => {
-      return timezone === timezoneName.toLowerCase();
-    });
-  } else {
-    if (!timezone) throw new Error('I need a timezone');
-    return timeZonesNames.includes(timezone);
-  }
+export default function isTimezone(timezone: string, ignoreCase: boolean = false): boolean {
+  if (!timezone) throw new Error('Timezone required in isTimezone');
+
+  return ignoreCase ? lowercaseTimezones.has(timezone.toLowerCase()) : timezones.has(timezone);
 };

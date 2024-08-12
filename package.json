@@ -1,6 +1,6 @@
 {
   "name": "is-timezone",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Is this string a valid timezone? Validate timezones before using them in node, dates, or new objects.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -34,6 +34,6 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@vvo/tzdb": "^6.62.0"
+    "@vvo/tzdb": "latest"
   }
 }
